@@ -4,7 +4,7 @@
 KERNEL_OFFSET equ 0x1000 ; kernel load address
 
 	mov [BOOT_DRIVE], dl
-	
+
 	mov bp, 0x9000	; set the stack
 	mov sp, bp
 

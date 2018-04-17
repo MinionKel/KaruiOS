@@ -21,7 +21,7 @@ char_loop:
 set_letter:
 	add al, 0x30
 	mov byte [bx], al
-	
+
 	cmp cx, 0
 	je print_hex_done
 	jmp char_loop
@@ -34,4 +34,4 @@ print_hex_done:
 
 HEX_OUT:
 	db '0x0000', 0
-	
+

@@ -4,7 +4,7 @@ switch_to_pm:
 	cli	; disable interruptes
 
 	lgdt [gdt_descriptor]
-	
+
 	mov eax, cr0
 	or eax, 0x1
 	mov cr0, eax	; set bit in CR0 register

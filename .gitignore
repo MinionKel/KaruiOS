@@ -1,3 +1,9 @@
+# Should we put
+#*
+#!/**/
+#!*.*
+os-image
+
 # Build file
 *.bin
 

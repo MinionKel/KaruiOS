@@ -4,6 +4,10 @@ HEADERS = $(wildcard kernel.*.h drivers/*.h)
 
 OBJ = ${C_SOURCES:.c=.o}
 
+CC = gcc
+CFLAGS = -m32 -ffreestanding -Wall -Wextra -Werror -c
+LDFLAGS = -Ttext 0x1000 --oformat binary -m elf_i386
+
 # default make target
 all: os-image
 
@@ -18,7 +22,8 @@ kernel.bin: kernel/kernel_entry.o ${OBJ}
 	ld -o $@ -Ttext 0x1000 $^ --oformat binary -m elf_i386
 
 %.o : %.c ${HEADERS}
-	gcc -m32 -ffreestanding -c $< -o $@
+	$(CC) $(CFLAGS) $< -o $@
+	# gcc -m32 -ffreestanding -c $< -o $@
 
 %.o : %.asm
 	nasm $< -f elf -o $@

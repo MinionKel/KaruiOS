@@ -18,6 +18,8 @@
 #define LIGHT_BROWN     14
 #define WHITE           15
 
+void fb_move_cursor(unsigned short pos);
+
 /**
  * In frame buffer, memory is devided into 16 bit cells
  * Bit:     | 15 - 9 | 7 - 4 | 3 - 0 |

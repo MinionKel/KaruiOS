@@ -16,6 +16,7 @@ run: all
 
 os-image: boot/boot_sect.bin kernel.bin
 	cat $^ > os-image
+	dd if=/dev/null of=os-image bs=1 count=1 seek=16777215
 
 # build the kernel binary
 kernel.bin: kernel/kernel_entry.o ${OBJ}
@@ -23,7 +24,6 @@ kernel.bin: kernel/kernel_entry.o ${OBJ}
 
 %.o : %.c ${HEADERS}
 	$(CC) $(CFLAGS) $< -o $@
-	# gcc -m32 -ffreestanding -c $< -o $@
 
 %.o : %.asm
 	nasm $< -f elf -o $@

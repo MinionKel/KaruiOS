@@ -1,6 +1,13 @@
 #ifndef __FRAME_BUFFER_H__
 #define __FRAME_BUFFER_H__
 
+/*
+ * frame_buffer.h
+ *
+ * Provides fine-grained control over frame buffer
+ *
+ */
+
 #define BLACK           0
 #define BLUE            1
 #define GREEN           2
@@ -18,7 +25,11 @@
 #define LIGHT_BROWN     14
 #define WHITE           15
 
-void fb_move_cursor(unsigned short pos);
+void init_framebuffer();
+
+void fb_move_cursor(unsigned short pos); // TODO: hide this function?
+
+int fb_move_cursor_to(unsigned short row, unsigned short col);
 
 /**
  * In frame buffer, memory is devided into 16 bit cells
@@ -35,6 +46,13 @@ union frame_buffer_cell {
     unsigned short raw;
 };
 
-void fb_write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg);
+void clear_screen();
+
+void fb_write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg); // TODO: hide this function?
+
+/*
+ * print string and advance the cursor
+ */
+void fb_print(char *str, unsigned int len);
 
 #endif
